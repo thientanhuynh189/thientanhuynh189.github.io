@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Huỳnh Thiên Tân</title>
+  <meta charset="utf-8">
+  <script type=text/javascript src=cal.js>
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      function f(d) {
+        // Nhận giá trị d từ value
+        // Nếu 'c' trả giá trị rỗng
+        if (d == 'c') {
+          document.getElementById('res').value = "";
+          return;
+        }
+        res = document.getElementById('res').value;
+        // Nếu bắt đầu từ giá trị 0, trả về rỗng
+        if (res == 0 && d == 0)
+        return;
+        // Nhận giá trị tính toán
+        if (d == '+' || d == '-' || d == '*' || d == '/') {
+          opr = d;
+          num = parseFloat(res);
+          document.getElementById('res').value = d;
+          return;
+        }
+        // Khai báo switch case với việc ghi nhận giá trị tính toán
+        if (d == '=') {
+          num1 = parseFloat(res);
+          switch (opr) {
+            case '+': ans = num + num1; break;
+            case '-': ans = num - num1; break;
+            case '*': ans = num * num1; break;
+            case '/': ans = parseInt(num / num1); break;
+          }
+          // Trả về kết quả sau khi tính toán
+          document.getElementById('res').value = ans;
+          return;
+        }
+        // Nếu bắt đầu từ dấu '-'
+        if (d == '--') {
+          document.getElementById('res').value *= -1;
+          return;
+        }
+        // Ghi nhận thêm nhiều giá trị tính toán
+        if (!isNaN(document.getElementById('res').value))
+          document.getElementById('res').value += d;
+        else
+          document.getElementById('res').value = d;
+      }
+      $("#res").focus(function(){
+        this.blur()
+      });
+      $("#b1").click(function(){
+        f(0)
+      });
+      $("#b2").click(function(){
+        f('1')
+      });
+      $("#b3").click(function(){
+        f('2')
+      });
+      $("#b4").click(function(){
+        f('+')
+      });
+      $("#b5").click(function(){
+        f('3')
+      });
+      $("#b6").click(function(){
+        f('4')
+      });
+      $("#b7").click(function(){
+        f('5')
+      });
+      $("#b8").click(function(){
+        f('-')
+      });
+      $("#b9").click(function(){
+        f('6')
+      });
+      $("#b10").click(function(){
+        f('7')
+      });
+      $("#b11").click(function(){
+        f('8')
+      });
+      $("#b12").click(function(){
+        f('*')
+      });
+      $("#b13").click(function(){
+        f('9')
+      });
+      $("#b14").click(function(){
+        f('--')
+      });
+      $("#b15").click(function(){
+        f('c')
+      });
+      $("#b16").click(function(){
+        f('/')
+      });
+      $("#b17").click(function(){
+        f('=')
+      });
+    });
+  </script>
+  <style>
+    #main{
+      width:200px;
+      display:block;
+      margin:auto;
+      border:1px solid blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <table style="width:100%; " border="1">
+      <tr>
+        <td colspan=4><input style="width:97%" type=text id=res size=16"></td>
+      </tr>
+      <tr>
+        <td style="text-align:center" ><input type="button" id="b1" value=0 size=2></td>
+        <td style="text-align:center"><input type="button" id="b2" value=1 size=2></td>
+        <td style="text-align:center"><input type="button" id="b3" value=2 size=2></td>
+        <td style="text-align:center"><input type="button" id="b4" value=+ size=2></td>
+      </tr>
+      <tr>
+        <td style="text-align:center"><input type="button" id="b5" value=3 size=2></td>
+        <td style="text-align:center"><input type="button" id="b6" value=4 size=2></td>
+        <td style="text-align:center"><input type="button" id="b7" value=5 size=2></td>
+        <td style="text-align:center"><input type="button" id="b8" value=- size=2></td>
+      </tr>
+      <tr>
+        <td style="text-align:center"><input type="button" id="b9" value=6 size=2></td>
+        <td style="text-align:center"><input type="button" id="b10" value=7 size=2></td>
+        <td style="text-align:center"><input type="button" id="b11" value=8 size=2></td>
+        <td style="text-align:center"><input type="button" id="b12" value=* size=2></td>
+      </tr>
+      <tr>
+        <td style="text-align:center"><input type="button" id="b13" value=9 size=2></td>
+        <td style="text-align:center"><input type="button" id="b14" value=+/- size=2></td>
+        <td style="text-align:center"><input type="button" id="b15" value='C' size=2></td>
+        <td style="text-align:center"><input type="button" id="b16" value='/' size=2></td>
+      </tr>
+      <tr>
+        <td colspan=4 style="text-align:center"><input style="width:50%" type="button" value="=" id="b17"></td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
