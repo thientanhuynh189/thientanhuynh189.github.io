@@ -1,2 +1,1 @@
-# CV
-Open CV to anyone
+# Software Engineering
